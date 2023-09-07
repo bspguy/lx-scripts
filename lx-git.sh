@@ -45,8 +45,13 @@ Push()
 
 }
 
+Log()
+{
+   git log -v HEAD..origin/main
+}
+
 # Get the options
-while getopts ":hsa" option; do
+while getopts ":hsal" option; do
    case $option in
 	h) # display Help
          Help
@@ -57,6 +62,9 @@ while getopts ":hsa" option; do
 	a) # Add new files, Commit and push
          AddCommitPush
          exit;;
+	l) # log commit diff
+         Log
+         exit;;         
      \?) # incorrect option
          echo "Error: Invalid option"
          exit;;
