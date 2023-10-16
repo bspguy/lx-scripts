@@ -14,6 +14,11 @@ sudo apt install -y boxes
 sudo apt install -y minicom
 sudo apt install -y dkms
 
+# Add support for accessing ttyUSB[X] without root previleges
+stat /dev/ttyUSBX
+sudo usermod -a -G dialout
+
+
 
 # clean up
 sudo apt install -f

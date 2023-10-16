@@ -1,12 +1,12 @@
  #######################################################
- # misteroy/scripts bdl_git.sh  last update 24.12.2021 #
+ # bspguy/lx-scripts lx_git.sh  last update 24.12.2021 #
  #######################################################
  #!/bin/sh
 Help()
 {
-   echo "bdl_git.sh script description."
+   echo "lx_git.sh script description."
    echo
-   echo "Syntax: bdl_git.sh [-h|s|a]"
+   echo "Syntax: lx_git.sh [-h|s|a]"
    echo "options:"
    echo "h     Print this Help."
    echo "s     Shows the git repo status"
@@ -24,10 +24,17 @@ Status()
 	fi
 }
 
+CheckoutRemote()
+{
+   git fetch origin
+   git checkout --track origin/"remote_branch_name"
+}
+
 Commit()
 {
 
 	//just commit
+   git commit -m "updated files :)"
 
 }
 
