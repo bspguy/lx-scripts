@@ -41,7 +41,7 @@ Commit()
 AddCommitPush()
 {
 
-	git add .  &&  git commit -m "fixed typo" && git push
+	git add .  &&  git commit -m "Updated lx-git script" && git push
 
 }
 
