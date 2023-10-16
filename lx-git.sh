@@ -27,7 +27,7 @@ Status()
 CheckoutRemote()
 {
    git fetch origin
-   git checkout --track origin/"remote_branch_name"
+   git checkout --track origin/remote_branch_name
 }
 
 Commit()
@@ -41,7 +41,7 @@ Commit()
 AddCommitPush()
 {
 
-	git add .  &&  git commit -m "updated files :)" && git push
+	git add .  &&  git commit -m "fixed typo" && git push
 
 }
 
