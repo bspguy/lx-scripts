@@ -4,9 +4,9 @@
  #!/bin/sh
 Help()
 {
-   echo "lx_git.sh script description."
+   echo "lx-git-utils.sh script description."
    echo
-   echo "Syntax: lx_git.sh [-h|s|a]"
+   echo "Syntax: lx-git-utils.sh [-h|s|a]"
    echo "options:"
    echo "h     Print this Help."
    echo "s     Shows the git repo status"
