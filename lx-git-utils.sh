@@ -24,7 +24,33 @@ Status()
 	fi
 }
 
-CheckoutRemote()
+Fetch()
+{
+	git fetch
+}
+
+Log()
+{
+	git log
+}
+
+ListRemoteGitTags()
+{
+	git tag -n
+}
+
+CheckOutNewBranch()
+{
+	git checkout -b <new_branch_name>
+ 	git push --set-upstream origin <new_branch_name>
+}
+
+CheckOutRemoteTag()
+{
+	git checkout -b <new_local_branch_name> tags/<remote_tag_name>
+}
+
+CheckOutRemoteBranch()
 {
    git fetch origin
    git checkout --track origin/remote_branch_name
@@ -47,9 +73,7 @@ AddCommitPush()
 
 Push()
 {
-
-	//just push
-
+	git push
 }
 
 Log()
