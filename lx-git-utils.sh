@@ -58,17 +58,12 @@ CheckOutRemoteBranch()
 
 Commit()
 {
-
-	//just commit
    git commit -m "updated files :)"
-
 }
 
 AddCommitPush()
 {
-
 	git add .  &&  git commit -m "Updated lx-git script" && git push
-
 }
 
 Push()
