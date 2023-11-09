@@ -39,6 +39,11 @@ ListRemoteGitTags()
 	git tag -n
 }
 
+ListRemoteBranches()
+{
+   git show-branch -r
+}
+
 CheckOutNewBranch()
 {
 	git checkout -b <new_branch_name>
