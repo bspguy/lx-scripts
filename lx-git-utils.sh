@@ -71,6 +71,15 @@ AddCommitPush()
 	git add .  &&  git commit -m "Updated lx-git script" && git push
 }
 
+
+MirrorGitBareRepo()
+{
+	git clone --bare --mirror  git@github.com:analogdevicesinc/libiio.git
+	#then 
+	git clone /path/to/bare/
+}
+
+
 Push()
 {
 	git push
