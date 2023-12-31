@@ -79,6 +79,15 @@ MirrorGitBareRepo()
 	git clone /path/to/bare/
 }
 
+CrateTag()
+{
+    git tag -a v1.4 -m "my version 1.4"
+}
+
+PushTags()
+{
+   git push origin --tags
+}
 
 Push()
 {
