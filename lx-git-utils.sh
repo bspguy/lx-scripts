@@ -46,13 +46,13 @@ ListRemoteBranches()
 
 CheckOutNewBranch()
 {
-	git checkout -b <new_branch_name>
- 	git push --set-upstream origin <new_branch_name>
+	git checkout -b new_branch_name
+ 	git push --set-upstream origin new_branch_name
 }
 
 CheckOutRemoteTag()
 {
-	git checkout -b <new_local_branch_name> tags/<remote_tag_name>
+	git checkout -b new_local_branch_name tags/remote_tag_name
 }
 
 CheckOutRemoteBranch()
