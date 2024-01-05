@@ -13,6 +13,7 @@ sudo apt install -y bison
 sudo apt install -y boxes
 sudo apt install -y minicom
 sudo apt install -y dkms
+sudo apt install -y vim
 
 # Add support for accessing ttyUSB[X] without root previleges
 stat /dev/ttyUSBX
