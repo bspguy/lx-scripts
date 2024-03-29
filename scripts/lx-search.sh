@@ -18,16 +18,16 @@ Help()
 
 find_string_in_file() {
 
-    grep -Rnw ./  -e "'$1'"
+    grep -Rnw ./  -e "'$2'"
 
 }
 
 find_string_in_file_name() {
-    find . -maxdepth 1 -name "*$1*" -print
+    find . -maxdepth 1 -name "*$2*" -print
 }
 
 search_using_plocate() {
-    plocate "$1"
+    plocate "$2"
 }
 
 while getopts ":hsfp" option; do
@@ -36,14 +36,14 @@ while getopts ":hsfp" option; do
          Help
          exit;;
 	s) 
-         find_string_in_file
+         find_string_in_file "$@"
          exit;;
 	f) 
-         find_string_in_file_name
+         find_string_in_file_name "$@"
          exit;;    
 
     p) 
-         search_using_plocate
+         search_using_plocate "$@"
          exit;;    
     \?)
          echo "Error: Invalid option"
