@@ -3,7 +3,31 @@
  #######################################################
  #!/bin/sh
 
-#xdg-open file2open.xxx
+Help()
+{
+   echo "lx-search.sh script description."
+   echo
+   echo "Syntax: lx-search.sh [-h|p]"
+   echo "options:"
+   echo "h     Print this Help."
+   echo "p     Open PDF"
+   echo
+}
 
+open_pdf_file() {
+    xdg-open "$2"
+}
 
-
+while getopts ":hp" option; do
+   case $option in
+	h) 
+         Help
+         exit;;
+    p) 
+         open_pdf_file "$@"
+         exit;;    
+    \?)
+         echo "Error: Invalid option"
+         exit;;
+   esac
+done

@@ -3,10 +3,10 @@
  ############################################################
  #!/bin/sh
 
-LX_SCRIPT_LOC="./"
+LX_SCRIPT_LOC=$PWD
 
 #
-# Add required binary tools to the user's search path
+# Add the lx-scripts to the user's search path
 #
 PATH="${LX_SCRIPT_LOC}/scripts/:${PATH}"
 
@@ -21,7 +21,6 @@ PATH=`echo ${PATH} | tr ":" "\n" | grep -v '^\./*$' | tr "\n" ":"`
 PATH=$(echo ${PATH} | sed -e 's/:*$//g' -e 's/::*/:/g')
 
 export PATH
-
 
 echo LX Scripts environment set to \'${LX_SCRIPT_LOC}\'
 
