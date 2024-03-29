@@ -30,7 +30,7 @@ search_using_plocate() {
     plocate "$1"
 }
 
-while getopts ":hsf" option; do
+while getopts ":hsfp" option; do
    case $option in
 	h) 
          Help
