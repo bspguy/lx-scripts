@@ -1,10 +1,41 @@
  #######################################################
- # bspguy/lx-scripts lx_git.sh  last update 24.12.2021 #
+ # bspguy/lx-scripts lx-git.sh  last update 24.12.2021 #
  #######################################################
  #!/bin/sh
+
+#!/bin/bash
+
+declare -A actions
+
+actions[start]="echo Starting the process..."
+actions[stop]="echo Stopping the process..."
+actions[restart]="echo Restarting the process..."
+
+param="$1"
+
+if [[ -n "${actions[$param]}" ]]; then
+    eval "${actions[$param]}"
+else
+    echo "Invalid option. Usage: $0 {start|stop|restart}"
+fi
+
+
+
+usage() {
+    echo "Script Usage:"
+    echo "$0 -start   Start the process."
+    echo "$0 -stop    Stop the process."
+    echo "$0 -restart Restart the process."
+    echo "$0 -h       Display this help message."
+    echo "Example:"
+    echo "$0 -start"
+    exit 1
+}
+
+
 Help()
 {
-   echo "lx-git-utils.sh script description."
+   echo "lx-git.sh script description."
    echo
    echo "Syntax: lx-git-utils.sh [-h|s|a]"
    echo "options:"
@@ -135,7 +166,7 @@ while getopts ":hsal" option; do
          Log
          exit;;         
      \?) # incorrect option
-         echo "Error: Invalid option"
+         echo "Invalid option. Usage: $0 {start|stop|restart}"
          exit;;
    esac
 done

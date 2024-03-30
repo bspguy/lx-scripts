@@ -10,7 +10,7 @@ Help()
    echo "Syntax: lx-search.sh [-h|p]"
    echo "options:"
    echo "h     Print this Help."
-   echo "p     Open PDF"
+   echo "p     Open PDF file type"
    echo
 }
 

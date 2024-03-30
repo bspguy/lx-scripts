@@ -25,9 +25,10 @@ export PATH
 echo LX Scripts environment set to \'${LX_SCRIPT_LOC}\'
 
 for s in /bin/sh sh; do
-	if ! $s --version 2>/dev/null | grep -q "^GNU bash"; then
-		echo "WARNING: $s is not bash! "
-		echo "bash is PetaLinux recommended shell. Please set your default shell to bash."
+	if ! $s --version 4>/dev/null | grep -q "^GNU bash"; then
+		echo "WARNING: $s is not bash or bash is not version 4 or upper! "
+		echo "bash version 4 is needed for using associative Arrays.
+		echo "bash is the recommended shell. Please set your default shell to bash."
 		break
 	fi
 done
