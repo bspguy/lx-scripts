@@ -198,3 +198,113 @@ echo "
 !_____! !_____! !____________________! !_____! !_____!
 "
 
+
+
+###############################
+
+#!/bin/bash
+
+Help() {
+    echo "lx-git.sh script description."
+    echo
+    echo "Syntax: lx-git.sh [-h|-s|-d|-f|-c|-p|-t|-lt|-lb|-co|-cot|-cob]"
+    echo "Options:"
+    echo "  -h       Print this help message."
+    echo "  -s       Show the git repo status."
+    echo "  -d       Show changes between working directory and index."
+    echo "  -f       Fetch latest changes from remote."
+    echo "  -c       Commit changes."
+    echo "  -p       Push changes to remote."
+    echo "  -t       Create a new tag."
+    echo "  -lt      List all remote tags."
+    echo "  -lb      List all remote branches."
+    echo "  -co      Create and switch to a new branch."
+    echo "  -cot     Checkout a remote tag."
+    echo "  -cob     Checkout a remote branch."
+    exit 1
+}
+
+Status() {
+    if [ $(git status --porcelain | wc -l) -eq "0" ]; then 
+        echo "  🟢 Git repo is clean."
+    else 
+        echo "  🔴 Git repo dirty. Quit."
+        exit 1
+    fi
+}
+
+Diff() {
+    git diff --cached
+}
+
+Fetch() {
+    git fetch
+}
+
+Commit() {
+    git add . && git commit -m "Updated lx-git script"
+}
+
+Push() {
+    git push
+}
+
+CreateTag() {
+    echo -n "Enter tag name: "
+    read tag_name
+    git tag -a "$tag_name" -m "Tag $tag_name created"
+}
+
+ListRemoteTags() {
+    git tag -n
+}
+
+ListRemoteBranches() {
+    git branch -r
+}
+
+CheckOutNewBranch() {
+    echo -n "Enter branch name: "
+    read branch_name
+    git checkout -b "$branch_name"
+    git push --set-upstream origin "$branch_name"
+}
+
+CheckOutRemoteTag() {
+    echo -n "Enter tag name: "
+    read tag_name
+    git checkout -b "$tag_name" "tags/$tag_name"
+}
+
+CheckOutRemoteBranch() {
+    echo -n "Enter branch name: "
+    read branch_name
+    git fetch origin
+    git checkout --track "origin/$branch_name"
+}
+
+while getopts ":hsdfcptltlbco:cot:cob:" option; do
+    case $option in
+        h) Help ;;
+        s) Status ;;
+        d) Diff ;;
+        f) Fetch ;;
+        c) Commit ;;
+        p) Push ;;
+        t) CreateTag ;;
+        lt) ListRemoteTags ;;
+        lb) ListRemoteBranches ;;
+        co) CheckOutNewBranch ;;
+        cot) CheckOutRemoteTag ;;
+        cob) CheckOutRemoteBranch ;;
+        \?) echo "Invalid option: -$OPTARG. Use -h for help." >&2
+            exit 1 ;;
+    esac
+done
+
+# If no options are provided, display help
+if [ $OPTIND -eq 1 ]; then
+    Help
+fi
+
+exit 0
